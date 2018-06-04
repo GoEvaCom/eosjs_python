@@ -1,69 +1,42 @@
-eos = require('eosjs')
-ecc = require('eosjs-ecc')
+Eos = require('eosjs')
 
-const EOS_ADDRESS = 'http://172.18.0.1:8888';
-const AUTHORITY_PRIVATE_KEY = '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
-const AUTHORITY_PUBLIC_KEY = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
-const CHAIN_ID = 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc4f'
+const httpEndpointAddress = process.argv[2];
+const creator_account = process.argv[3];
+const account_name = process.argv[4];
+const keyProviderValue = process.argv[5];
+const owner_public_key = process.argv[6];
+const active_public_key = process.argv[7];
+const buyrambytes_bytes = process.argv[8];
+const delegatebw_stake_net_quantity = process.argv[9];
+const delegatebw_stake_cpu_quantity = process.argv[10];
+const delegatebw_transfer = process.argv[11];
 
 
+function create_account(httpEndpointAddress, creator_account, account_name, keyProviderValue, owner_public_key, active_public_key, buyrambytes_bytes, delegatebw_stake_net_quantity, delegatebw_stake_cpu_quantity, delegatebw_transfer){
 
-
-function generate_eos_keys() {
-  return ecc.randomKey().then(privateKey => {
-    const publicKey = ecc.privateToPublic(privateKey);
-    return {
-      'private': privateKey,
-      'public': publicKey
-    }
-  }).then(responseData => {
-    return responseData;
-  });
-}
-
-function create_account(keys){
-  wif = keys['active']['private']
-
-  eos = Eos({keyProvider: AUTHORITY_PRIVATE_KEY, httpEndpoint: EOS_ADDRESS})
-  console.log('wif', wif);
-  console.log('AUTHORITY_PRIVATE_KEY', AUTHORITY_PRIVATE_KEY);
-  console.log(keys);
-
-  const account_name = 'mycontract13'
+  eos = Eos({keyProvider: keyProviderValue, httpEndpoint: httpEndpointAddress})
 
   eos.transaction(tr => {
     tr.newaccount({
-      creator: 'eosio',
+      creator: creator_account,
       name: account_name,
-      owner: keys['owner']['public'],
-      active: keys['active']['public']
+      owner: owner_public_key,
+      active: active_public_key
     })
     tr.buyrambytes({
-      payer: 'eosio',
+      payer: creator_account,
       receiver: account_name,
-      bytes: 8192
+      bytes: parseInt(buyrambytes_bytes)
     })
     tr.delegatebw({
-      from: 'eosio',
+      from: creator_account,
       receiver: account_name,
-      stake_net_quantity: '100.0000 SYS',
-      stake_cpu_quantity: '100.0000 SYS',
-      transfer: 0
+      stake_net_quantity: delegatebw_stake_net_quantity,
+      stake_cpu_quantity: delegatebw_stake_cpu_quantity,
+      transfer: parseInt(delegatebw_transfer)
     })
   });
 
 }
 
-
-function main(){
-  keys = {}
-  generate_eos_keys().then(key => {return key;}).then(key => {
-    keys['owner'] = key;
-    generate_eos_keys().then(key2 => {return key2;}).then(key2 => {
-      keys['active'] = key2;
-      create_account(keys);
-    });
-  });
-}
-
-main();
+create_account(httpEndpointAddress, creator_account, account_name, keyProviderValue, owner_public_key, active_public_key, buyrambytes_bytes, delegatebw_stake_net_quantity, delegatebw_stake_cpu_quantity, delegatebw_transfer);
