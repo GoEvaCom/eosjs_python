@@ -1,0 +1,9 @@
+npm-debug.log
+coverage
+sandbox
+docs
+src
+.nyc_output
+docker
+dist
+bin

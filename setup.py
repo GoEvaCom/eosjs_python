@@ -8,4 +8,7 @@ setup(name='eosjs_python',
       author_email='raphael.gaudreault@eva.coop',
       license='MIT',
       packages=['eosjs_python'],
+      install_requires=[
+      	'Naked'
+      ],
       zip_safe=False)

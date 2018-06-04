@@ -1,0 +1,2 @@
+class GenerateKeysException(Exception):
+    pass

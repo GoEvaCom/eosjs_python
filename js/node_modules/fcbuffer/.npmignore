@@ -1,0 +1,5 @@
+mocha/mocha.test.js
+npm-debug.log
+coverage
+test
+src

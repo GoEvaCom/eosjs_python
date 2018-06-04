@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - 0.10
+  - 6
+  - 9
+after_success:
+  - npm install -g nyc
+  - npm install -g codecov
+  - nyc --reporter lcov npm test && codecov

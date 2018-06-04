@@ -8,7 +8,6 @@ const CHAIN_ID = 'cf057bbfb72640471fd910bcb67639c22df9f92470936cddc1ade0e2f2e7dc
 
 
 
-Eos = require('eosjs') // Eos = require('./src')
 
 function generate_eos_keys() {
   return ecc.randomKey().then(privateKey => {
@@ -30,7 +29,7 @@ function create_account(keys){
   console.log('AUTHORITY_PRIVATE_KEY', AUTHORITY_PRIVATE_KEY);
   console.log(keys);
 
-  const account_name = 'mycontract12'
+  const account_name = 'mycontract13'
 
   eos.transaction(tr => {
     tr.newaccount({
