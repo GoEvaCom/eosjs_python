@@ -2,10 +2,10 @@
 
 eosjs python is a eosjs wrapper to communicate with the eos blockchain in python. It works by wrapping the nodejs library eosjs into a Python package.
 
-##Authors
+## Authors
 @raphaelgodro
 
-##License
+## License
 This project is licensed under the MIT License.
 
 ## Installation
