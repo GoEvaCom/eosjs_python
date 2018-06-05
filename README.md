@@ -18,7 +18,19 @@ curl -sL https://deb.nodesource.com/setup_10.x | bash
 apt-get -y install nodejs
 ```
 
-You also need eosjs as a dependency with npm.
+Then install from Pypi packages:
+```
+pip3 install eosjs_python
+```
+
+Or from source`(if you want to contribute) : 
+```
+git clone https://github.com/EvaCoop/eosjs_python
+cd eosjs_python
+python3 setup.py develop
+```
+
+You also need eosjs as a node dependency.
 You could install it globally
 ```
 npm install --save eosjs
@@ -28,17 +40,6 @@ Or can also install it in the js subdirectory within this package
 cd js && npm install
 ```
 
-
-
-Then install from Pypi packages:
-```
-pip3 install eosjs_python
-```
-
-Or from source`(if you want to contribute) : 
-```
-python3 setup.py develop
-```
 
 
 
