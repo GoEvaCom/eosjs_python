@@ -3,7 +3,7 @@
 eosjs python is a eosjs wrapper to communicate with the eos blockchain in python. It works by wrapping the nodejs library eosjs into a Python package.
 
 ## Authors
-@raphaelgodro
+[@raphaelgodro](https://github.com/raphaelgodro)
 
 ## License
 This project is licensed under the MIT License.
@@ -18,10 +18,17 @@ curl -sL https://deb.nodesource.com/setup_10.x | bash
 apt-get -y install nodejs
 ```
 
-You also need eosjs as a dependency with npm :
+You also need eosjs as a dependency with npm.
+You could install it globally
 ```
 npm install --save eosjs
 ```
+Or can also install it in the js subdirectory within this package
+```
+cd js && npm install
+```
+
+
 
 Then install from Pypi packages:
 ```
