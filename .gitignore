@@ -1,1 +1,3 @@
-.pypirc
+build/
+dist/
+eosjs_python.egg-info/

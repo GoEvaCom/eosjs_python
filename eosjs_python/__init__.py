@@ -1,15 +1,17 @@
 from Naked.toolshed.shell import (muterun_js, execute_js)
-import sys, base64, json
+import sys, base64, json, os
 from eosjs_python.Exceptions import * 
 
 class Eos:
+
+	current_dir = os.path.dirname(os.path.realpath(__file__))
 	def __init__(self, config):
 		self.http_address = config['http_address'] if 'http_address' in config else 'http://127.0.0.1:8888'
 		self.key_provider = config['key_provider'] if 'keyProvider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
-
+		print('current dir', self.current_dir)
 	@classmethod
 	def generate_key_pair(cls):
-		response = muterun_js('../../js/GenerateKeys.js')
+		response = muterun_js(cls.current_dir + '/js/GenerateKeys.js')
 		if response.exitcode == 0:
 			data = load_data(response.stdout)
 			return data
@@ -33,8 +35,7 @@ class Eos:
 			config['delegatebw_stake_cpu_quantity'] if 'delegatebw_stake_cpu_quantity' in config else '100.0000 SYS',
 			config['delegatebw_transfer'] if 'delegatebw_transfer' in config else 0
 		)
-		print(arguments)
-		response = muterun_js('../../js/CreateAccount.js', arguments=arguments)
+		response = muterun_js(self.current_dir + '/js/GenerateKeys.js', arguments=arguments)
 		if response.exitcode == 0:
 			print(response.stdout.decode('utf8'))
 		else:
