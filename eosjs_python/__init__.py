@@ -3,12 +3,13 @@ import sys, base64, json, os
 from eosjs_python.Exceptions import * 
 
 class Eos:
-
 	current_dir = os.path.dirname(os.path.realpath(__file__))
+
 	def __init__(self, config):
 		self.http_address = config['http_address'] if 'http_address' in config else 'http://127.0.0.1:8888'
 		self.key_provider = config['key_provider'] if 'keyProvider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
 		print('current dir', self.current_dir)
+
 	@classmethod
 	def generate_key_pair(cls):
 		response = muterun_js(cls.current_dir + '/js/GenerateKeys.js')
