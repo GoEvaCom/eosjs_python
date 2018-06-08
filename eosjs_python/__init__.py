@@ -54,7 +54,7 @@ class Eos:
 			permission,
 			json.dumps(data)
 		)
-		print('arguments', arguments)
+
 		response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
 		if response.exitcode == 0:
 			print(response.stdout.decode('utf8'))
