@@ -66,6 +66,26 @@ eos.newaccount({
 })
 ```
 
+### Push transaction into contract
+```
+from eosjs_python import Eos
+
+eos = Eos({
+	'http_address': 'http://172.18.0.1:8888',
+	'key_provider': '5JhhMGNPsuU42XXjZ57FcDKvbb7KLrehN65tdTQFrH51uruZLHi'
+})
+
+#cleos push action eosio.token transfer '["eva","rider1","1 EVA","initial balance"]' -p eva
+
+eos.push_transaction('eosio.token','transfer','eva','active',{
+	"from":"eva",
+	"to":"rider1",
+	"quantity":"1 EVA",
+	"memo":""
+})
+```
+
+
 ## Contributing
 
 Some work still has to be done to interface with all eosjs possibilities, feel free to send some pull requests!

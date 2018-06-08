@@ -7,8 +7,7 @@ class Eos:
 
 	def __init__(self, config):
 		self.http_address = config['http_address'] if 'http_address' in config else 'http://127.0.0.1:8888'
-		self.key_provider = config['key_provider'] if 'keyProvider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
-		print('current dir', self.current_dir)
+		self.key_provider = config['key_provider'] if 'key_provider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
 
 	@classmethod
 	def generate_key_pair(cls):
@@ -41,7 +40,27 @@ class Eos:
 			print(response.stdout.decode('utf8'))
 		else:
 		    raise CreateAccountException(response.stderr)
-	
+
+	def push_transaction(self, acct_contract, func_name, acct_owner, permission, data):
+		"""
+		node PushContractTransaction.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eosio.token' 'transfer' 'eva' 'active' '{"from":"eva","to":"rider1","quantity":"1 EVA","memo":""}'
+		"""
+		arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' " % (
+			self.http_address,
+			self.key_provider,
+			acct_contract,
+			func_name,
+			acct_owner,
+			permission,
+			json.dumps(data)
+		)
+		print('arguments', arguments)
+		response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
+		if response.exitcode == 0:
+			print(response.stdout.decode('utf8'))
+		else:
+		    raise PushContractTransactionException(response.stderr)
+		
 
 def load_data(stdout):
 	true_string = stdout.decode('utf8')

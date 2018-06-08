@@ -3,3 +3,6 @@ class GenerateKeysException(Exception):
 
 class CreateAccountException(Exception):
     pass
+
+class PushContractTransactionException(Exception):
+    pass
