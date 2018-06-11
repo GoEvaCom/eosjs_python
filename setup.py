@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='eosjs_python',
-      version='0.1.3',
+      version='0.1.31',
       description='Python library to communicate with eosjs in order to sign blockchain transactions.',
       url='https://github.com/raphaelgodro/eosjs_python',
       author='Raphael Gaudreault',
