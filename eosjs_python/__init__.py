@@ -35,8 +35,10 @@ class Eos:
 			config['delegatebw_stake_cpu_quantity'] if 'delegatebw_stake_cpu_quantity' in config else '100.0000 SYS',
 			config['delegatebw_transfer'] if 'delegatebw_transfer' in config else 0
 		)
-		response = muterun_js(self.current_dir + '/js/GenerateKeys.js', arguments=arguments)
+		print('arguments', arguments)
+		response = muterun_js(self.current_dir + '/js/CreateAccount.js', arguments=arguments)
 		if response.exitcode == 0:
+			print('out')
 			print(response.stdout.decode('utf8'))
 		else:
 		    raise CreateAccountException(response.stderr)
@@ -54,7 +56,7 @@ class Eos:
 			permission,
 			json.dumps(data)
 		)
-
+		print(arguments)
 		response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
 		if response.exitcode == 0:
 			print(response.stdout.decode('utf8'))

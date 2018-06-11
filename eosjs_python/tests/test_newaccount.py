@@ -8,8 +8,8 @@ eos = Eos({
 eos.newaccount({
 	'creator': 'eosio',
 	'name': 'mytestacc13',
-	'owner_public_key': 'EOS7vTHtMbZ1g9P8BiyAGD7Ni7H6UALVLVCW13xZrXT4heCBke3it',
-	'active_public_key': 'EOS8KKKYBBdwrmXRRynDXSxTX2qoT9TA4agahXXF4ccUgRCy81RNc',
+	'owner_public_key': 'EOS7aJDVdDjcpjAXS53sFoVMHQJdFTMhaS3mThnXE3okFEtvxmQov',
+	'active_public_key': 'EOS7aJDVdDjcpjAXS53sFoVMHQJdFTMhaS3mThnXE3okFEtvxmQov',
 	'buyrambytes_bytes': 8192,
 	'delegatebw_stake_net_quantity': '100.0000 SYS',
 	'delegatebw_stake_cpu_quantity': '100.0000 SYS',

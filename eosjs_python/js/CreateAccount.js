@@ -13,7 +13,6 @@ const delegatebw_transfer = process.argv[11];
 
 
 function create_account(httpEndpointAddress, creator_account, account_name, keyProviderValue, owner_public_key, active_public_key, buyrambytes_bytes, delegatebw_stake_net_quantity, delegatebw_stake_cpu_quantity, delegatebw_transfer){
-
   eos = Eos({keyProvider: keyProviderValue, httpEndpoint: httpEndpointAddress})
 
   eos.transaction(tr => {
@@ -22,19 +21,19 @@ function create_account(httpEndpointAddress, creator_account, account_name, keyP
       name: account_name,
       owner: owner_public_key,
       active: active_public_key
-    })
+    });
     tr.buyrambytes({
       payer: creator_account,
       receiver: account_name,
       bytes: parseInt(buyrambytes_bytes)
-    })
+    });
     tr.delegatebw({
       from: creator_account,
       receiver: account_name,
       stake_net_quantity: delegatebw_stake_net_quantity,
       stake_cpu_quantity: delegatebw_stake_cpu_quantity,
       transfer: parseInt(delegatebw_transfer)
-    })
+    });
   });
 
 }

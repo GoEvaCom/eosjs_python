@@ -13,9 +13,7 @@ eos = Eos({
   httpEndpoint: httpEndpointAddress
 })
 
-//nodejs 'http://127.0.0.1:8888' '5JhhMGNPsuU42XXjZ57FcDKvbb7KLrehN65tdTQFrH51uruZLHi' 'eosio.token' 'transfer' 'eva' 'active' '{"from":"eva","to":"rider1","quantity":"1 EVA","memo":""}'
 
-// returns Promise
 eos.transaction({
   actions: [
     {
