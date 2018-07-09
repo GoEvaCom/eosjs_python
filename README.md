@@ -93,6 +93,17 @@ eos.push_transaction('eosio.token','transfer','eva','active',{
 })
 ```
 
+### Reading a table
+```
+from eosjs_python import Eos
+eos = Eos({
+	'http_address': 'http://127.0.0.1:8888',
+	'key_provider': '5JhhMGNPsuU42XXjZ57FcDKvbb7KLrehN65tdTQFrH51uruZLHi'
+})
+eos.get_table('eva', 'eva', 'communities')
+
+```
+
 
 ## Contributing
 

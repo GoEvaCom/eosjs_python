@@ -9,6 +9,8 @@
   "author": "Raphael Gaudreault",
   "license": "ISC",
   "dependencies": {
-    "eosjs": "^14.1.0"
+    "bytebuffer": "^5.0.1",
+    "eosjs": "^14.1.0",
+    "long": "^4.0.0"
   }
 }

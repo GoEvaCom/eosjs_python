@@ -16,12 +16,14 @@ function create_account(httpEndpointAddress, creator_account, account_name, keyP
   eos = Eos({keyProvider: keyProviderValue, httpEndpoint: httpEndpointAddress})
 
   eos.transaction(tr => {
-    tr.newaccount({
+    let data = {
       creator: creator_account,
       name: account_name,
       owner: owner_public_key,
       active: active_public_key
-    });
+    }
+    console.log(data);
+    tr.newaccount(data);
     tr.buyrambytes({
       payer: creator_account,
       receiver: account_name,
