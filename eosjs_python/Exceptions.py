@@ -6,3 +6,6 @@ class CreateAccountException(Exception):
 
 class PushContractTransactionException(Exception):
     pass
+
+class GetTableException(Exception):
+	pass

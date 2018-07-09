@@ -35,10 +35,8 @@ class Eos:
 			config['delegatebw_stake_cpu_quantity'] if 'delegatebw_stake_cpu_quantity' in config else '100.0000 SYS',
 			config['delegatebw_transfer'] if 'delegatebw_transfer' in config else 0
 		)
-		print('arguments', arguments)
 		response = muterun_js(self.current_dir + '/js/CreateAccount.js', arguments=arguments)
 		if response.exitcode == 0:
-			print('out')
 			print(response.stdout.decode('utf8'))
 		else:
 		    raise CreateAccountException(response.stderr)
@@ -56,7 +54,6 @@ class Eos:
 			permission,
 			json.dumps(data)
 		)
-		print(arguments)
 		response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
 		if response.exitcode == 0:
 			print(response.stdout.decode('utf8'))
@@ -74,12 +71,13 @@ class Eos:
 			scope,
 			table
 		)
-		print(arguments)
 		response = muterun_js(self.current_dir + '/js/GetTable.js', arguments=arguments)
 		if response.exitcode == 0:
-			print(response.stdout.decode('utf8'))
+			json_answer = response.stdout.decode('utf8')
+			json_value_ans = json.loads(json_answer)
+			return json_value_ans
 		else:
-		    raise PushContractTransactionException(response.stderr)
+		    raise GetTableException(response.stderr)
 		
 
 def load_data(stdout):

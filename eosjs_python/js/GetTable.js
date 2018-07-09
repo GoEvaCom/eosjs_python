@@ -18,5 +18,5 @@ eos.getTableRows({
     table: table,
     json: true,
 }).then(response => {
-  console.log(response);
+  console.log(JSON.stringify(response));
 });
