@@ -9,3 +9,6 @@ class PushContractTransactionException(Exception):
 
 class GetTableException(Exception):
 	pass
+
+class GetBalanceException(Exception):
+    pass

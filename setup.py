@@ -1,11 +1,11 @@
 from setuptools import setup
 
 setup(name='eosjs_python',
-      version='0.1.41',
+      version='0.1.5',
       description='Python library to communicate with eosjs in order to sign blockchain transactions.',
-      url='https://github.com/raphaelgodro/eosjs_python',
-      author='Raphael Gaudreault',
-      author_email='raphael.gaudreault@eva.coop',
+      url='https://github.com/EvaCoop/eosjs_python',
+      author='Raphael Gaudreault, Merouane Benthameur',
+      author_email='raphael.gaudreault@eva.coop, merouane.benthameur@eva.coop',
       license='MIT',
       packages=['eosjs_python'],
       install_requires=[
