@@ -3,7 +3,9 @@
 eosjs python is a eosjs wrapper to communicate with the eos blockchain in python. It works by wrapping the nodejs library eosjs into a Python package.
 
 ## Authors
-[@raphaelgodro](https://github.com/raphaelgodro)
+* [@raphaelgodro](https://github.com/raphaelgodro)
+
+* [@MerouaneBen](https://github.com/MerouaneBen)
 
 ## License
 This project is licensed under the MIT License.
@@ -40,13 +42,10 @@ Or can also install it in the js subdirectory within this package
 cd js && npm install
 ```
 
-
-
-
 ## Examples using the library
 
 ### Generate ECC keys
-```
+```python
 from eosjs_python import Eos
 
 key_pair = Eos.generate_key_pair()
@@ -54,7 +53,7 @@ print(key_pair)
 ```
 
 ### Create EOS account
-```
+```python
 from eosjs_python import Eos
 
 eos = Eos({
@@ -75,7 +74,7 @@ eos.newaccount({
 ```
 
 ### Push transaction into contract
-```
+```python
 from eosjs_python import Eos
 
 eos = Eos({
@@ -94,7 +93,7 @@ eos.push_transaction('eosio.token','transfer','eva','active',{
 ```
 
 ### Reading a table
-```
+```python
 from eosjs_python import Eos
 eos = Eos({
 	'http_address': 'http://127.0.0.1:8888',
@@ -104,6 +103,19 @@ eos.get_table('eva', 'eva', 'communities')
 
 ```
 
+### Getting Currency Balance
+
+```python
+from eosjs_python import Eos
+
+eos = Eos({
+    'http_address': 'http://localhost:8888',
+    'key_provider': '5KR93vcDVtJJ8eZ3td4gU87p8PPhsfgK5NZKyDij83kSRJ2UTrM'
+})
+
+eos.get_currency_balance('eosio.token', 'xcdzdbkqamvu', 'EVA')
+
+```
 
 ## Contributing
 
