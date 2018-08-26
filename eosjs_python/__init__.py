@@ -1,5 +1,5 @@
-from Naked.toolshed.shell import (muterun_js, execute_js)
-import sys, base64, json, os
+from Naked.toolshed.shell import (muterun_js)
+import json, os
 from eosjs_python.Exceptions import *
 
 
@@ -7,7 +7,7 @@ class Eos:
     current_dir = os.path.dirname(os.path.realpath(__file__))
 
     def __init__(self, config):
-        self.http_address = config['http_address'] if 'http_address' in config else 'http://127.0.0.1:8888'
+        self.http_address = config['http_address'] if 'http_address' in config else None
         self.key_provider = config[
             'key_provider'] if 'key_provider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
 

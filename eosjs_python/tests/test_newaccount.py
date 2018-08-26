@@ -1,13 +1,13 @@
 from eosjs_python import Eos
 
 eos = Eos({
-	'http_address': 'http://172.18.0.1:8888',
+	'http_address': 'http://localhost:8888',
 	'key_provider': '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
 })
 
-eos.newaccount({
+test = eos.newaccount({
 	'creator': 'eosio',
-	'name': 'mytestacc13',
+	'name': 'mytestacc14',
 	'owner_public_key': 'EOS7aJDVdDjcpjAXS53sFoVMHQJdFTMhaS3mThnXE3okFEtvxmQov',
 	'active_public_key': 'EOS7aJDVdDjcpjAXS53sFoVMHQJdFTMhaS3mThnXE3okFEtvxmQov',
 	'buyrambytes_bytes': 8192,
@@ -15,3 +15,5 @@ eos.newaccount({
 	'delegatebw_stake_cpu_quantity': '100.0000 SYS',
 	'delegatebw_transfer': 0
 })
+
+print(test)
