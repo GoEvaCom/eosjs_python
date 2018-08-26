@@ -26,4 +26,10 @@ eos.transaction({
       data: data_values
     }
   ]
-})
+}).then(function (value){
+        console.log(value);
+        return value;
+      }).catch(function (e) {
+      console.error(e);
+      process.exit(1);
+      })

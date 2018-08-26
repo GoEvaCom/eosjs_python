@@ -1,7 +1,7 @@
 from eosjs_python import Eos
 
 eos = Eos({
-	'http_address': 'http://172.18.0.1:8888',
+	'http_address': 'http://localhost:8888',
 	'key_provider': '5JhhMGNPsuU42XXjZ57FcDKvbb7KLrehN65tdTQFrH51uruZLHi'
 })
 
