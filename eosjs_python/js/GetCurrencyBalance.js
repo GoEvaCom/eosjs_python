@@ -19,10 +19,7 @@ eos.getCurrencyBalance({
     json: true,
 }).then(response => {
   console.log(JSON.stringify(response));
-}).then(function (value){
-    console.log(value);
-    return value;
-  }).catch(function (e) {
+}).catch(function (e) {
   console.error(e);
   process.exit(1);
   })
