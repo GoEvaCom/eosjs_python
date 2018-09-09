@@ -5,8 +5,8 @@ function generate_eos_keys() {
   return ecc.randomKey().then(privateKey => {
     const publicKey = ecc.privateToPublic(privateKey);
     return {
-      'private': privateKey,
-      'public': publicKey
+      "private": privateKey,
+      "public": publicKey
     }
   }).then(responseData => {
     return responseData;

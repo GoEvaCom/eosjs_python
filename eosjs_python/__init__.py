@@ -46,7 +46,7 @@ class Eos:
         """
 		node PushContractTransaction.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eosio.token' 'transfer' 'eva' 'active' '{"from":"eva","to":"rider1","quantity":"1 EVA","memo":""}'
 		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' " % (
+        arguments = '"%s" "%s" "%s" "%s" "%s" "%s" "%s" ' % (
             self.http_address,
             self.key_provider,
             acct_contract,
@@ -84,7 +84,7 @@ class Eos:
         """
 		node GetCurrencyBalance.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eosio.token' 'xd455yhesww2' 'EVA'
 		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s' " % (
+        arguments = '"%s" "%s" "%s" "%s" "%s" ' % (
             self.http_address,
             self.key_provider,
             code,
