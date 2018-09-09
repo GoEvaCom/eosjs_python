@@ -36,6 +36,7 @@ function create_account(httpEndpointAddress, creator_account, account_name, keyP
               transfer: parseInt(delegatebw_transfer)
           });
       }).then(function (value){
+        console.log(JSON.stringify(value));
         return value;
       }).catch(function (e) {
       console.error(e);

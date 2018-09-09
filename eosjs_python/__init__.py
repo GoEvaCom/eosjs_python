@@ -38,7 +38,8 @@ class Eos:
         )
         response = muterun_js(self.current_dir + '/js/CreateAccount.js', arguments=arguments)
         if response.exitcode == 0:
-            print(response.stdout.decode('utf8'))
+            data = load_data(response.stdout)
+            return data
         else:
             raise CreateAccountException(response.stderr)
 
@@ -57,7 +58,8 @@ class Eos:
         )
         response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
         if response.exitcode == 0:
-            print(response.stdout.decode('utf8'))
+            data = load_data(response.stdout)
+            return data
         else:
             raise PushContractTransactionException(response.stderr)
 
@@ -74,9 +76,8 @@ class Eos:
         )
         response = muterun_js(self.current_dir + '/js/GetTable.js', arguments=arguments)
         if response.exitcode == 0:
-            json_answer = response.stdout.decode('utf8')
-            json_value_ans = json.loads(json_answer)
-            return json_value_ans
+            data = load_data(response.stdout)
+            return data
         else:
             raise GetTableException(response.stderr)
 
@@ -93,9 +94,8 @@ class Eos:
         )
         response = muterun_js(self.current_dir + '/js/GetCurrencyBalance.js', arguments=arguments)
         if response.exitcode == 0:
-            json_answer = response.stdout.decode('utf8')
-            json_value_ans = json.loads(json_answer)
-            return json_value_ans
+            data = load_data(response.stdout)
+            return data
         else:
             raise GetBalanceException(response.stderr)
 
