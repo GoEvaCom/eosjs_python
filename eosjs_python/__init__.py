@@ -63,16 +63,18 @@ class Eos:
         else:
             raise PushContractTransactionException(response.stderr)
 
-    def get_table(self, code, scope, table):
-        """
-		node GetTable.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eva' 'eva' 'communities'
-		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s'" % (
+    def get_table(self, code, scope, table, key_type='', index_position='', limit='', table_key='', lower_bound=''):
+        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' " % (
             self.http_address,
             self.key_provider,
             code,
             scope,
-            table
+            table,
+            key_type,
+            index_position,
+            limit,
+            table_key,
+            lower_bound
         )
         response = muterun_js(self.current_dir + '/js/GetTable.js', arguments=arguments)
         if response.exitcode == 0:
