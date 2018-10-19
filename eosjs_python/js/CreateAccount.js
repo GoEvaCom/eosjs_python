@@ -37,7 +37,6 @@ function create_account(httpEndpointAddress, creator_account, account_name, keyP
           });
       }).then(function (value){
         console.log(JSON.stringify(value));
-        return value;
       }).catch(function (e) {
       console.error(e);
       process.exit(1);
