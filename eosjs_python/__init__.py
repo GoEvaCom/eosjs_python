@@ -104,6 +104,22 @@ class Eos:
         else:
             raise GetBalanceException(response.stderr)
 
+    def get_account(self, account_name):
+        """
+        nodejs GetAccount.js "https://eos.greymass.com:443" "WIF" "eosjacklucky"
+        """
+        arguments = "'%s' '%s' '%s'" % (
+            self.http_address,
+            self.key_provider,
+            account_name
+        )
+        response = muterun_js(self.current_dir + '/js/GetAccount.js', arguments=arguments)
+        if response.exitcode == 0:
+            data = self.load_data(response.stdout)
+            return data
+        else:
+            raise GetAccountException(response.stderr)
+
 
     def load_data(self, stdout):
         true_string = stdout.decode('utf8')

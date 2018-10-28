@@ -12,3 +12,6 @@ class GetTableException(Exception):
 
 class GetBalanceException(Exception):
     pass
+
+class GetAccountException(Exception):
+    pass
