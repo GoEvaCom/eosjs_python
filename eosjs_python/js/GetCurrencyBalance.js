@@ -11,7 +11,7 @@ const symbol = process.argv[7];
 eos = Eos({
   keyProvider: keyProviderValue,
   httpEndpoint: httpEndpointAddress,
-  chain_id: chain_id
+  chainId: chain_id
 })
 
 eos.getCurrencyBalance({

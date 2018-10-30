@@ -8,7 +8,7 @@ const accountName = process.argv[5];
 eos = Eos({
   keyProvider: wif,
   httpEndpoint: httpEndpointAddress,
-  chain_id: chain_id
+  chainId: chain_id
 })
 
 eos.getAccount(accountName).then(accountData => {

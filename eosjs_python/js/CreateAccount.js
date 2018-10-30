@@ -14,7 +14,7 @@ const delegatebw_transfer = process.argv[12];
 
 
 function create_account(httpEndpointAddress, creator_account, account_name, keyProviderValue, owner_public_key, active_public_key, buyrambytes_bytes, delegatebw_stake_net_quantity, delegatebw_stake_cpu_quantity, delegatebw_transfer){
-      eos = Eos({keyProvider: keyProviderValue, httpEndpoint: httpEndpointAddress, chain_id: chain_id})
+      eos = Eos({keyProvider: keyProviderValue, httpEndpoint: httpEndpointAddress, chainId: chain_id})
       eos.transaction(tr => {
           let data = {
               creator: creator_account,

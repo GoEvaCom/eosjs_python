@@ -16,7 +16,7 @@ const lower_bound = process.argv[12];
 eos = Eos({
   keyProvider: wif,
   httpEndpoint: httpEndpointAddress,
-  chain_id: chain_id
+  chainId: chain_id
 })
 
 var params = {

@@ -12,7 +12,7 @@ const data_values = JSON.parse(process.argv[9]);
 eos = Eos({
   keyProvider: wif,
   httpEndpoint: httpEndpointAddress,
-  chain_id: chain_id
+  chainId: chain_id
 })
 
 
