@@ -27,7 +27,7 @@ eos.transaction({
     }
   ]
 }).then(function (value){
-      console.log(JSON.stringify(value));
+        console.log(JSON.stringify(value));
         return value;
       }).catch(function (e) {
       console.error(e);
