@@ -62,7 +62,8 @@ class Eos:
         )
         response = muterun_js(self.current_dir + '/js/PushContractTransaction.js', arguments=arguments)
         if response.exitcode == 0:
-            return
+            data = self.load_data(response.stdout)
+            return data
         else:
             raise PushContractTransactionException(response.stderr)
 
