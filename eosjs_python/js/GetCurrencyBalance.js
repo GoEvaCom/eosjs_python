@@ -1,15 +1,17 @@
 Eos = require('eosjs') // Eos = require('./src')
 
 const httpEndpointAddress = process.argv[2];
-const keyProviderValue = process.argv[3];
-const code = process.argv[4];
-const account = process.argv[5];
-const symbol = process.argv[6];
+const chain_id = process.argv[3];
+const keyProviderValue = process.argv[4];
+const code = process.argv[5];
+const account = process.argv[6];
+const symbol = process.argv[7];
 
 
 eos = Eos({
   keyProvider: keyProviderValue,
-  httpEndpoint: httpEndpointAddress
+  httpEndpoint: httpEndpointAddress,
+  chainId: chain_id
 })
 
 eos.getCurrencyBalance({

@@ -1,12 +1,14 @@
 Eos = require('eosjs') // Eos = require('./src')
 
 const httpEndpointAddress = process.argv[2];
-const wif = process.argv[3];
-const accountName = process.argv[4];
+const chain_id = process.argv[3];
+const wif = process.argv[4];
+const accountName = process.argv[5];
 
 eos = Eos({
   keyProvider: wif,
-  httpEndpoint: httpEndpointAddress
+  httpEndpoint: httpEndpointAddress,
+  chainId: chain_id
 })
 
 eos.getAccount(accountName).then(accountData => {

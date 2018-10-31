@@ -1,5 +1,5 @@
 from Naked.toolshed.shell import (muterun_js)
-import json, os
+import json, os, requests
 from eosjs_python.Exceptions import *
 
 
@@ -10,6 +10,7 @@ class Eos:
         self.http_address = config['http_address'] if 'http_address' in config else None
         self.key_provider = config[
             'key_provider'] if 'key_provider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
+        self.chain_id = self.get_chain_id()
         if 'debug' in config:
             self.debug_mode = config['debug']
         else:
@@ -29,8 +30,9 @@ class Eos:
         """
 		node CreateAccount.js 'http://172.18.0.1:8888' 'eosio' 'mytest12' '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3' '5JuaVWh3LDh1VH69urCdCa3A2YiQydbsLM1ZtGgsTXLYouxaTfc' 'EOS7vTHtMbZ1g9P8BiyAGD7Ni7H6UALVLVCW13xZrXT4heCBke3it' 'EOS8KKKYBBdwrmXRRynDXSxTX2qoT9TA4agahXXF4ccUgRCy81RNc' 8192 '100.0000 SYS' '100.0000 SYS' 0
 		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s'" % (
+        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s'" % (
             self.http_address,
+            self.chain_id,
             config['creator'] if 'creator' in config else 'eosio',
             config['name'],
             self.key_provider,
@@ -51,8 +53,9 @@ class Eos:
         """
 		node PushContractTransaction.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eosio.token' 'transfer' 'eva' 'active' '{"from":"eva","to":"rider1","quantity":"1 EVA","memo":""}'
 		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' " % (
+        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s'" % (
             self.http_address,
+            self.chain_id,
             self.key_provider,
             acct_contract,
             func_name,
@@ -68,8 +71,9 @@ class Eos:
             raise PushContractTransactionException(response.stderr)
 
     def get_table(self, code, scope, table, key_type='', index_position='', limit='', table_key='', lower_bound=''):
-        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' " % (
+        arguments = "'%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s' '%s'" % (
             self.http_address,
+            self.chain_id,
             self.key_provider,
             code,
             scope,
@@ -91,8 +95,9 @@ class Eos:
         """
 		node GetCurrencyBalance.js 'http://127.0.0.1:8888' '5JhhMGNPsuU52XXjZ57FcDKvbb7KLrEhN65tdTQFrH51uruZLHi' 'eosio.token' 'xd455yhesww2' 'EVA'
 		"""
-        arguments = "'%s' '%s' '%s' '%s' '%s' " % (
+        arguments = "'%s' '%s' '%s' '%s' '%s' '%s'" % (
             self.http_address,
+            self.chain_id,
             self.key_provider,
             code,
             account,
@@ -109,8 +114,9 @@ class Eos:
         """
         nodejs GetAccount.js "https://eos.greymass.com:443" "WIF" "eosjacklucky"
         """
-        arguments = "'%s' '%s' '%s'" % (
+        arguments = "'%s' '%s' '%s' '%s'" % (
             self.http_address,
+            self.chain_id,
             self.key_provider,
             account_name
         )
@@ -127,3 +133,9 @@ class Eos:
         if self.debug_mode:
             print(true_string)
         return json.loads(true_string)
+
+
+    def get_chain_id(self):
+        r = requests.get(self.http_address+"/v1/chain/get_info")
+        response = json.loads(r.text)
+        return response["chain_id"]

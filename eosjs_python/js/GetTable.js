@@ -1,20 +1,22 @@
 Eos = require('eosjs') // Eos = require('./src')
 
 const httpEndpointAddress = process.argv[2];
-const wif = process.argv[3];
-const code = process.argv[4];
-const scope = process.argv[5];
-const table = process.argv[6];
-const key_type = process.argv[7];
-const index_position = process.argv[8];
-const limit = process.argv[9];
-const table_key = process.argv[10];
-const lower_bound = process.argv[11];
+const chain_id = process.argv[3];
+const wif = process.argv[4];
+const code = process.argv[5];
+const scope = process.argv[6];
+const table = process.argv[7];
+const key_type = process.argv[8];
+const index_position = process.argv[9];
+const limit = process.argv[10];
+const table_key = process.argv[11];
+const lower_bound = process.argv[12];
 
 
 eos = Eos({
   keyProvider: wif,
-  httpEndpoint: httpEndpointAddress
+  httpEndpoint: httpEndpointAddress,
+  chainId: chain_id
 })
 
 var params = {
