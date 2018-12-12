@@ -42,6 +42,8 @@ Or can also install it in the js subdirectory within this package
 cd js && npm install
 ```
 
+In order for the repo to work, one really need to install the js dependencies.
+
 ## Examples using the library
 
 ### Generate ECC keys
@@ -57,11 +59,11 @@ print(key_pair)
 from eosjs_python import Eos
 
 eos = Eos({
-	'http_address': 'http://172.18.0.1:8888',
-	'key_provider': '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
+	'http_address': 'http://167.99.181.173/:8888',
+	'key_provider': '5KjwNHXDMwdEbzBx858GpDqGM2u3wD4rYkYNskRdcgTZTcQEBQZ'
 })
 
-eos.newaccount({
+resp = eos.newaccount({
 	'creator': 'eosio',
 	'name': 'mytestacc13',
 	'owner_public_key': 'EOS7vTHtMbZ1g9P8BiyAGD7Ni7H6UALVLVCW13xZrXT4heCBke3it',
@@ -86,7 +88,7 @@ eos = Eos({
 
 eos.push_transaction('eosio.token','transfer','eva','active',{
 	"from":"eva",
-	"to":"rider1",
+	"to":"mytestacc13",
 	"quantity":"1 EVA",
 	"memo":""
 })

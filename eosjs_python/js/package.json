@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bytebuffer": "^5.0.1",
-    "eosjs": "^14.1.0",
+    "eosjs": "^16.0.8",
     "long": "^4.0.0"
   }
 }
