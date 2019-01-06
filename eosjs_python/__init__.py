@@ -37,7 +37,7 @@ class Eos:
         response = muterun_js(cls.current_dir + '/js/Encrypt.js', arguments=arguments)
         if response.exitcode == 0:
             encrypted_msg = response.stdout.decode('utf8')
-            return encrypted_msg
+            return encrypted_msg.replace("\n", "")
         else:
             raise EncryptSecretException(response.stderr)
 
@@ -52,7 +52,7 @@ class Eos:
         response = muterun_js(cls.current_dir + '/js/Decrypt.js', arguments=arguments)
         if response.exitcode == 0:
             plaintext = response.stdout.decode('utf8')
-            return plaintext
+            return plaintext.replace("\n", "")
         else:
             raise EncryptSecretException(response.stderr)
 
