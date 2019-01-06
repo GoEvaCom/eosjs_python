@@ -15,3 +15,6 @@ class GetBalanceException(Exception):
 
 class GetAccountException(Exception):
     pass
+
+class EncryptSecretException(Exception):
+	pass

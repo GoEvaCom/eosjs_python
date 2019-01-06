@@ -119,6 +119,23 @@ eos.get_currency_balance('eosio.token', 'xcdzdbkqamvu', 'EVA')
 
 ```
 
+### Send secrets
+This is useful to share secrets on a public blockchain 
+```python
+/*
+Sender
+Private key: 5KiKyYPR3tJjwRt1XsJXXofD3YsYUSzSfvPg7pCSNDv64Av28ib
+Public key: EOS6Fz1GpMuxh3ZXGX34N7B7xY9VP5hmxcxRYBvgSkJRT4eGWPUvD
+
+Receiver
+Private key: 5KhAG8w3K8HVDaJLY6HxZTrfrZs7mjU9Afih5axxpRLNW6rvEDf
+Public key: EOS6E3T6S2xy5Fu2fZrZbHRsPNHjx5JXXFkBwQA9gCrgVTDALxQeC
+*/
+from eosjs_python import Eos
+encrypted_msg = Eos.encrypt_chain_message("5KiKyYPR3tJjwRt1XsJXXofD3YsYUSzSfvPg7pCSNDv64Av28ib", "EOS6E3T6S2xy5Fu2fZrZbHRsPNHjx5JXXFkBwQA9gCrgVTDALxQeC", "secret chain message")
+plaintext = Eos.decrypt_chain_message("5KhAG8w3K8HVDaJLY6HxZTrfrZs7mjU9Afih5axxpRLNW6rvEDf", "EOS6Fz1GpMuxh3ZXGX34N7B7xY9VP5hmxcxRYBvgSkJRT4eGWPUvD", encrypted_msg)
+print(plaintext)
+```
 ## Contributing
 
 Some work still has to be done to interface with all eosjs possibilities, feel free to send some pull requests!

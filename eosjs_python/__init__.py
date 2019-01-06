@@ -26,6 +26,36 @@ class Eos:
         else:
             raise GenerateKeysException(response.stderr)
 
+    @classmethod
+    def encrypt_chain_message(cls, privKeySender, pubKeyRecipient, message):
+        arguments = "'%s' '%s' '%s'" % (
+            privKeySender,
+            pubKeyRecipient,
+            message
+        )
+
+        response = muterun_js(cls.current_dir + '/js/Encrypt.js', arguments=arguments)
+        if response.exitcode == 0:
+            encrypted_msg = response.stdout.decode('utf8')
+            return encrypted_msg
+        else:
+            raise EncryptSecretException(response.stderr)
+
+    @classmethod
+    def decrypt_chain_message(cls, privKeyRecipient, pubKeySender, encryptedMessage):
+        arguments = "'%s' '%s' '%s'" % (
+            privKeyRecipient,
+            pubKeySender,
+            encryptedMessage
+        )
+
+        response = muterun_js(cls.current_dir + '/js/Decrypt.js', arguments=arguments)
+        if response.exitcode == 0:
+            plaintext = response.stdout.decode('utf8')
+            return plaintext
+        else:
+            raise EncryptSecretException(response.stderr)
+
     def newaccount(self, config):
         """
 		node CreateAccount.js 'http://172.18.0.1:8888' 'eosio' 'mytest12' '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3' '5JuaVWh3LDh1VH69urCdCa3A2YiQydbsLM1ZtGgsTXLYouxaTfc' 'EOS7vTHtMbZ1g9P8BiyAGD7Ni7H6UALVLVCW13xZrXT4heCBke3it' 'EOS8KKKYBBdwrmXRRynDXSxTX2qoT9TA4agahXXF4ccUgRCy81RNc' 8192 '100.0000 SYS' '100.0000 SYS' 0
@@ -126,7 +156,6 @@ class Eos:
             return data
         else:
             raise GetAccountException(response.stderr)
-
 
     def load_data(self, stdout):
         true_string = stdout.decode('utf8')
