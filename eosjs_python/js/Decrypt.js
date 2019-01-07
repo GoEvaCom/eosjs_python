@@ -1,4 +1,4 @@
-ecc = require('eosjs-ecc');
+ecc = require('eosjs-ecc-eva');
 var Long =  require('long');
 
 const privKeyRecipient = process.argv[2];
@@ -13,7 +13,7 @@ function decrypt(privKeyRecipient, pubKeySender, encryptedMessage){
 	var checksum = Number(values[2]);
 	var message = Buffer.from(values[3], "base64");
 	try {
-		let messageBuffer = ecc.Aes.decrypt(privKeyRecipient, pubKeySender, nonce, message, checksum);
+		let messageBuffer = ecc.Aes.decrypt(privKeyRecipient, pubKeySender, nonce.toNumber(), message, checksum);
 		console.log(messageBuffer.toString("utf8"));
 	} catch(error) {
 		console.error(error);

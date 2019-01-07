@@ -1,5 +1,5 @@
 eos = require('eosjs')
-ecc = require('eosjs-ecc');
+ecc = require('eosjs-ecc-eva');
 
 function generate_eos_keys() {
   return ecc.randomKey().then(privateKey => {

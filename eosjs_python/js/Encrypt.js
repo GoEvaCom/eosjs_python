@@ -1,4 +1,4 @@
-ecc = require('eosjs-ecc');
+ecc = require('eosjs-ecc-eva');
 
 const privKeySender = process.argv[2];
 const pubKeyRecipient = process.argv[3];

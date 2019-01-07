@@ -1,0 +1,15 @@
+{
+  "name": "eosjs_python",
+  "version": "1.0.0",
+  "description": "",
+  "main": "CreateAccount.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raphael Gaudreault",
+  "license": "ISC",
+  "dependencies": {
+    "bytebuffer": "^5.0.1",
+    "long": "^4.0.0"
+  }
+}
