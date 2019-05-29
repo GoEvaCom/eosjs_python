@@ -168,3 +168,20 @@ class Eos:
         r = requests.get(self.http_address+"/v1/chain/get_info")
         response = json.loads(r.text)
         return response["chain_id"]
+    
+    def get_block (self, block_num):
+        """
+        nodejs GetBlock.js "https://eos.greymass.com:443" "WIF" "eosjacklucky"
+        """
+        arguments = "'%s' '%s' '%s' '%s'" % (
+            self.http_address,
+            self.chain_id,
+            self.key_provider,
+            block_num
+        )
+        response = muterun_js(self.current_dir + '/js/GetBlock.js', arguments=arguments)
+        if response.exitcode == 0:
+            data = self.load_data(response.stdout)
+            return data
+        else:
+            raise GetAccountException(response.stderr)
