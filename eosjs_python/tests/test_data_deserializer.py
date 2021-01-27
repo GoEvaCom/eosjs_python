@@ -1,18 +1,14 @@
 from eosjs_python import Eos
 
 eos = Eos({
-    'http_address': 'http://167.99.181.173:8888'
+    'http_address': '' #Your endpoint
 })
 
-abi_hex = ""
-with open('c_ex.txt', 'r') as reader:
-    # Note: readlines doesn't trim the line endings
-    abi_hex = reader.readlines()
-
-data_hex = '80b9fdac32f785c3c0012d313338343330373835362e2e2e2e32343134323735392e2e2e2e3230393231373034382e2e2e2e5243334252374669746a5a454d4c494b45364f796f4d4c35466175536f4645704a676e632b48734a7766467947506453493746414d527772514b65614c55514457686256636e67373677413357656578637257384d6f695a75752f532b35644f6c716d594e3872377a3056354f774b2f6a45657a7139435931476855744c4b65695033354d3957585051457433696a2b5976716368413d3d'
+abi_hex = "" #Your ABI hex-encoded binary data for the contract
+data_hex = "" #Your hex-encoded binary data for the action
 
 print(eos.deserialize_action_data(
     abi_hex[0], 
-    'eva', 
-    'setridrjson', 
+    'acount', 
+    'action_name', 
     data_hex))
