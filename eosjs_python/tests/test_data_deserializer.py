@@ -9,6 +9,6 @@ data_hex = "" #Your hex-encoded binary data for the action
 
 print(eos.deserialize_action_data(
     abi_hex[0], 
-    'acount', 
+    'account', 
     'action_name', 
     data_hex))
