@@ -1,6 +1,7 @@
 const { Api, JsonRpc } = require('eosjs-deserialize');
 const { createInitialTypes, getType, getTypesFromAbi, hexToUint8Array, deserializeActionData } = require('eosjs-deserialize/dist/eosjs-serialize')
 const fetch = require('node-fetch');
+const util = require('util');
 
 const endpoint = process.argv[2];
 const cAbiHex = process.argv[3];
@@ -17,8 +18,8 @@ function deserializeActData(endpoint, cAbiHex, cAccount, actName, actDataHex) {
     const api = new Api({
         rpc,
         signatureProvider: null,
-        textDecoder: new TextDecoder(),
-        textEncoder: new TextEncoder()
+        textDecoder: new util.TextDecoder(),
+        textEncoder: new util.TextEncoder()
       })
     
     //Deserialize contract abi
@@ -37,8 +38,8 @@ function deserializeActData(endpoint, cAbiHex, cAccount, actName, actDataHex) {
                 cAccount,
                 actName,
                 actDataHex,
-                new TextEncoder(),
-                new TextDecoder());
+                new util.TextEncoder(),
+                new util.TextDecoder());
 
     console.log(JSON.stringify(actDataJson));
 }
