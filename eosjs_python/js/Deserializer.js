@@ -1,4 +1,5 @@
-const { Api, JsonRpc, createInitialTypes, getType, getTypesFromAbi, hexToUint8Array, deserializeActionData } = require('eosjs');
+const { Api, JsonRpc } = require('eosjs-deserialize');
+const { createInitialTypes, getType, getTypesFromAbi, hexToUint8Array, deserializeActionData } = require('eosjs-deserialize/dist/eosjs-serialize')
 const fetch = require('node-fetch');
 
 const endpoint = process.argv[2];
