@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "bytebuffer": "^5.0.1",
-    "eosjs": "^21.0.3",
     "fetch": "^1.1.0",
     "long": "^4.0.0",
     "node-fetch": "^2.6.1"
