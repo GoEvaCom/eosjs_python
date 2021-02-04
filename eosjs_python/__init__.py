@@ -186,18 +186,32 @@ class Eos:
         else:
             raise GetAccountException(response.stderr)
 
-    def deserialize_action_data (self, c_abi_hex, c_account, act_name, act_data_hex):
+    def deserialize_action_data (self, c_abi, c_account, act_name, act_data_hex):
         """
         Deserializes action data based on a specific contract abi.
         """
-        arguments = "'%s' '%s' '%s' '%s' '%s'" % (
-            self.http_address,
-            c_abi_hex,
+        arguments = "'%s' '%s' '%s' '%s'" % (
+            c_abi,
             c_account,
             act_name,
             act_data_hex
         )
-        response = muterun_js(self.current_dir + '/js/Deserializer.js', arguments=arguments)
+        response = muterun_js(self.current_dir + '/js/ActionDeserializer.js', arguments=arguments)
+        if response.exitcode == 0:
+            data = self.load_data(response.stdout)
+            return data
+        else:
+            raise GetAccountException(response.stderr)
+
+    def deserialize_contract (self, c_abi_hex):
+        """
+        Deserializes contract binary data
+        """
+        arguments = "'%s' '%s'" % (
+            self.http_address,
+            c_abi_hex
+        )
+        response = muterun_js(self.current_dir + '/js/ContractDeserializer.js', arguments=arguments)
         if response.exitcode == 0:
             data = self.load_data(response.stdout)
             return data

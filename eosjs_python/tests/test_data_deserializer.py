@@ -1,4 +1,5 @@
 from eosjs_python import Eos
+import json
 
 eos = Eos({
     'http_address': '' #Your endpoint
@@ -7,8 +8,9 @@ eos = Eos({
 abi_hex = "" #Your ABI hex-encoded binary data for the contract
 data_hex = "" #Your hex-encoded binary data for the action
 
-print(eos.deserialize_action_data(
-    abi_hex[0], 
-    'account', 
-    'action_name', 
-    data_hex))
+contract = eos.deserialize_contract(abi_hex[0])
+contract_r = json.dumps(contract)
+
+action = eos.deserialize_action(""" YOUR DATA """)
+
+print(action)
