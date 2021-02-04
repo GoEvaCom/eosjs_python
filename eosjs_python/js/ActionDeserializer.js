@@ -12,8 +12,6 @@ const actDataHex = process.argv[5];
  */
 function deserializeActData(cAbiJson, cAccount, actName, actDataHex) {  
 
-    //cAbiJson = JSON.parse(cAbiJson).cAbiJson;
-
     const types = getTypesFromAbi(createInitialTypes(), cAbiJson);
 
     const actions = new Map();
