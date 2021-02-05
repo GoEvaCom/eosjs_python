@@ -11,6 +11,6 @@ data_hex = "" #Your hex-encoded binary data for the action
 contract = eos.deserialize_contract(abi_hex[0])
 contract_r = json.dumps(contract)
 
-action = eos.deserialize_action(""" YOUR DATA """)
+action = eos.deserialize_action_data(""" YOUR DATA """)
 
 print(action)
