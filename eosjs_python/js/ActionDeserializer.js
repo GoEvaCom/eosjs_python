@@ -10,7 +10,9 @@ const actDataHex = process.argv[5];
 /**
  * Deserializes action data based on a specific contract abi.
  */
-function deserializeActData(cAbiJson, cAccount, actName, actDataHex) {  
+function deserializeActData(cAbiJson, cAccount, actName, actDataHex) { 
+    
+    cAbiJson = JSON.parse(cAbiJson);
 
     const types = getTypesFromAbi(createInitialTypes(), cAbiJson);
 
