@@ -34,6 +34,7 @@ You also need eosjs as a node dependency.
 You could install it globally
 ```
 npm install -g eosjs
+npm install -g eosjs-ecc-eva
 ```
 Or can also install it in the js subdirectory within this package
 ```
