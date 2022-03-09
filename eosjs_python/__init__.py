@@ -17,6 +17,21 @@ class Eos:
             self.debug_mode = False
 
     @classmethod
+    def convert_key (cls, key_k1_format):
+        """
+        DConvert key K1 format to EOS####
+        """
+        arguments = "'%s'" % (
+            key_k1_format
+        )
+        response = muterun_js(cls.current_dir + '/js/ConvertKey.js', arguments=arguments)
+        if response.exitcode == 0:
+            true_string = response.stdout.decode('utf8').replace('\n', '')
+            return true_string
+        else:
+            raise GetAccountException(response.stderr)
+
+    @classmethod
     def generate_key_pair(cls):
         response = muterun_js(cls.current_dir + '/js/GenerateKeys.js')
         if response.exitcode == 0:
