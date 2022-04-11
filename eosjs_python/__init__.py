@@ -10,7 +10,7 @@ class Eos:
         self.http_address = config['http_address'] if 'http_address' in config else None
         self.key_provider = config[
             'key_provider'] if 'key_provider' in config else '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
-        self.chain_id = self.get_chain_id()
+        self.chain_id = config['chain_id'] if 'chain_id' in config else self.get_chain_id()
         if 'debug' in config:
             self.debug_mode = config['debug']
         else:
